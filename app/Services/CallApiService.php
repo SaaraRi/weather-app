@@ -14,8 +14,6 @@ class CallApiService
      */
     public function getWeather(string $city): array
     {
-        // Make API request
-
 
         $apiKey = config('services.openweather.key');
         $apiUrl = "http://api.openweathermap.org/data/2.5/weather?q={$city}&units=metric&appid={$apiKey}";

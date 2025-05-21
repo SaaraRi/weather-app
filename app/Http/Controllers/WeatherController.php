@@ -18,22 +18,18 @@ class WeatherController extends Controller
 
     public function index(Request $request)
     {
-        $city = $request->query('city', ''); // Default to an empty string
-        $weatherData = []; // Initialize as an empty array
-        $error = null; // Initialize as null
+        $city = $request->query('city', '');
+        $weatherData = [];
+        $error = null;
 
-        // Check if the city is provided
-        // and if it's not empty
         if (!empty($city)) {
-            try {
-                $weatherData = $this->apiService->getWeather($city);
-                if (empty($weatherData)) {
-                    $error = 'City not found or API error.';
-                }
-            } catch (\Exception $e) {
-                $error = 'Error fetching weather data: ' . $e->getMessage();
+            $weatherData = $this->apiService->getWeather($city);
+
+            if (empty($weatherData)) {
+                $error = 'City not found or API error.';
             }
         }
+
         return view('weather', [
             'city' => $city,
             'weatherData' => $weatherData,
