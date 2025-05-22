@@ -30,6 +30,18 @@
     @if (!empty($weatherData))
         <div class="container result-container">
             <h2>Weather in <span style="color: rgb(230,29,118	)">{{ $weatherData['name'] }}</span></h2>
+            <div class="date-div">
+                <div class="date">
+                    <img width="20" height="20" src="https://img.icons8.com/windows/32/clock--v1.png"
+                        alt="clock--v1" />
+                    <p>{{ date('H:i') }}</p>
+                </div>
+                <div class="date">
+                    <img width="16" height="16" src="https://img.icons8.com/android/24/calendar.png"
+                        alt="calendar" />
+                    <p>{{ date('d/m/Y') }}</p>
+                </div>
+            </div>
             <table class="table" border="1">
                 <tr>
                     <th>Temperature</th>
